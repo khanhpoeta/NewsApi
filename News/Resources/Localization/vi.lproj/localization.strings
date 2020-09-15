@@ -1,0 +1,68 @@
+/*
+  localization.strings
+  NeAlo
+
+  Created by Kent Nguyen on 11/23/19.
+  Copyright © 2019 NeAlo. All rights reserved.
+*/
+
+"appName" = "Nealo";
+"appLicence" = "Bằng việc đăng ký số điện thoại, bạn chấp nhận với\nĐiều khoản sử dụng và Chính sách riêng tư";
+"privacy" = "Chính sách riêng tư";
+"termOfUse" = "Điều khoản sử dụng";
+"news" = "Nổi bật";
+"conversation" = "Tin nhắn";
+"doctor" = "Chuyên gia";
+"qa" = "Hỏi đáp";
+
+/* Welcome */
+"welcome_title" = "Bạn ơi,";
+"welcome_message" = "Nealo là một người trợ lý giúp bạn giải đáp những thắc mắc về vấn đề tâm sinh lý, hãy nhập số điện thoại vào đây để tiếp tục nhé!";
+"invalid_phone_input" = "Nhập sai số điện thoại";
+"income_phone_message" = "Reng reng! Bạn có một\ncuộc gọi từ %@";
+"waiting_phone_message" = "Bạn đã đặt cuộc hẹn để Nealo\ngọi lại cho bạn sau 30 phút";
+"by_pass_waiting" = "Tôi không muốn đợi";
+/* Verify Code View*/
+"verify_code_view_message" = "Một mã gồm 4 chữ số đã được gửi tới số điện thoại (+84) %@, bạn vui lòng nhập vào đây:";
+"waiting_title" = "Vui lòng đợi";
+"waiting_message" = "Nealo đang nối máy với bạn\ntrong ít phút nữa...";
+
+/* Dashboard */
+// News
+"new_title" = "Chào %@,";
+"SOS" = "SOS";
+
+// Settings
+"profile_title" = "Thiết lập";
+"log_out" = "Đăng xuất";
+"payment" = "Thanh toán";
+"become_volunteer" = "Trở thành tư vấn viên";
+"cards" = "Tài khoản";
+
+// Profile
+"protect_mode" = "Khóa ứng dụng với sinh trắc học";
+"connect_FB" = "Kết nối với FB";
+//Chat
+"conversation" = "Trò chuyện";
+"appointment" = "Lịch hẹn";
+"note" = "Ghi chú";
+"cancel" = "Cancel";
+"ok" = "OK";
+"schedule" = "Lịch hẹn";
+// Messages List
+"message_list_title" = "Tin nhắn";
+"message_list_online" = "Tư vấn viên đang online";
+
+// Question
+"question_list_title" = "Hỏi đáp";
+"major_title" = "Chuyên mục";
+"major_1" = "Trẻ nhi đồng";
+"major_2" = "Trẻ vị thành\nniên";
+"major_3" = "Vợ chồng/\nCặp đôi";
+"major_4" = "Trầm cảm";
+"major_5" = "Tự kỷ";
+"major_6" = "Các vấn đề\nkhác";
+
+// Doctor List
+"doctor_list_title" = "Chuyên gia";
+

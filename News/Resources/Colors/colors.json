@@ -1,0 +1,16 @@
+{
+    "b1"                        : "#3C86F5",
+    "b2"                        : "#42AFFF",
+    "r1"                        : "#EB5757",
+    "g1"                        : "#7FD162",
+    "n1"                        : "#616878",
+    "n2"                        : "#828282",
+    "n3"                        : "#BDBDBD",
+    "n4"                        : "#E0E0E0",
+    "n5"                        : "#F2F2F2",
+    "view_background"           : "#EAEEF9",
+    "verify_Code_Selected"      : "#2493F9",
+    "verify_Code"               : "#DBE4F7",
+    "rounded_view_color1"       : "#42AFFF",
+    "rounded_view_color2"       : "#3C86F5"
+}
