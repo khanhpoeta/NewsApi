@@ -12,8 +12,9 @@ import RxCocoa
 
 class TopHeadlineViewController: BaseViewController {
     
-    let viewModel = TopHeadLineViewModel()
+    private let viewModel = TopHeadLineViewModel()
     @IBOutlet weak var tableView:UITableView!
+    private var selectedArticle:Article?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,8 @@ class TopHeadlineViewController: BaseViewController {
             .zip(tableView.rx.itemSelected, tableView.rx.modelSelected(Article.self))
             .bind { [unowned self] indexPath, model in
                 self.tableView.deselectRow(at: indexPath, animated: true)
+                self.selectedArticle = model
+                self.performSegue(withIdentifier: "articleDetail", sender: self)
         }
         .disposed(by: disposeBag)
         
@@ -50,5 +53,16 @@ class TopHeadlineViewController: BaseViewController {
         tableView.rowHeight = UITableView.automaticDimension
         self.tableView.register(ArticleTableViewCell.getNib(), forCellReuseIdentifier: "Article")
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? ArticleDetailViewController, let url = URL.init(string: self.selectedArticle!.url ?? "")
+        {
+            controller.url = url
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return self.selectedArticle != nil
     }
 }

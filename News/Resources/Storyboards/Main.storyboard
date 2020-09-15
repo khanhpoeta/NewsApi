@@ -44,6 +44,7 @@
                     <connections>
                         <outlet property="segmentSearchArticle" destination="w78-jk-YVE" id="cw8-Vd-psr"/>
                         <outlet property="tableView" destination="fin-F6-hEK" id="5Zo-GQ-b7B"/>
+                        <segue destination="HbO-zK-eAA" kind="showDetail" identifier="articleDetail" id="ikN-4C-QXP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fw0-3J-bWo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -75,6 +76,7 @@
                     <tabBarItem key="tabBarItem" title="Top Headlines" id="gCc-9d-Kqj"/>
                     <connections>
                         <outlet property="tableView" destination="Z5b-Ky-wAl" id="qVZ-eh-kbY"/>
+                        <segue destination="HbO-zK-eAA" kind="showDetail" identifier="articleDetail" id="jCw-2f-K79"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="isi-Sn-v8m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -133,5 +135,42 @@
             </objects>
             <point key="canvasLocation" x="-314" y="-16"/>
         </scene>
+        <!--Article Detail View Controller-->
+        <scene sceneID="KF4-fK-dwu">
+            <objects>
+                <viewController id="HbO-zK-eAA" customClass="ArticleDetailViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VEj-DK-LH6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Nh-aM-IHp">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0Nh-aM-IHp" firstAttribute="top" secondItem="QMY-Iy-Les" secondAttribute="top" id="1XA-uh-6o7"/>
+                            <constraint firstItem="QMY-Iy-Les" firstAttribute="trailing" secondItem="0Nh-aM-IHp" secondAttribute="trailing" id="BLb-ld-5Na"/>
+                            <constraint firstItem="0Nh-aM-IHp" firstAttribute="leading" secondItem="QMY-Iy-Les" secondAttribute="leading" id="DDC-7j-6Cp"/>
+                            <constraint firstItem="QMY-Iy-Les" firstAttribute="bottom" secondItem="0Nh-aM-IHp" secondAttribute="bottom" id="rEr-RT-XCj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QMY-Iy-Les"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="0Nh-aM-IHp" id="Wxy-66-PhP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mxE-y9-z4T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-732" y="1491"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ikN-4C-QXP"/>
+    </inferredMetricsTieBreakers>
 </document>
