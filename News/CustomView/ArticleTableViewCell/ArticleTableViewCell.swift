@@ -31,13 +31,20 @@ class ArticleTableViewCell: UITableViewCell {
         imgViewArticle.image = nil
         lblSourceName.text = nil
         lblArticleTitle.text = nil
+        
         if let article = entity as? Article{
             if let str = article.urlToImage,  let url = URL.init(string: str){
                 imgViewArticle.af.setImage(withURL: url)
             }
+            if let _ = article.urlToImage
+            {
+                
+            }
+            imgViewArticle.getConstraint("height")?.constant = article.urlToImage == nil ? 0 : 180
             lblSourceName.text = article.source
             lblArticleTitle.text = article.title
             lblArticlePublishDate.text = article.publishedAt?.toString(format: "dd/MM/YYY")
         }
+        self.layoutIfNeeded()
     }
 }
