@@ -1,0 +1,32 @@
+{
+    "status": "ok",
+    "totalResults": 76389,
+    "articles": [
+        {
+            "source": {
+                "id": "techcrunch",
+                "name": "TechCrunch"
+            },
+            "author": "Romain Dillet",
+            "title": "Apple introduces the Apple Watch SE, a cheaper Apple Watch",
+            "description": "In addition to keeping old generation devices at an entry-level price, Apple is introducing a brand new Apple Watch at a cheaper price point. The new Apple Watch SE features the same design as the newly announced Apple Watch Series 6. But it costs $279. “The …",
+            "url": "http://techcrunch.com/2020/09/15/apple-introduces-the-apple-watch-se-a-cheaper-apple-watch/",
+            "urlToImage": "https://techcrunch.com/wp-content/uploads/2020/09/Apple-Watch-SE_Retina-display.jpg?w=711",
+            "publishedAt": "2020-09-15T17:39:14Z",
+            "content": "In addition to keeping old generation devices at an entry-level price, Apple is introducing a brand new Apple Watch at a cheaper price point. The new Apple Watch SE features the same design as the ne… [+1634 chars]"
+        },
+        {
+            "source": {
+                "id": "engadget",
+                "name": "Engadget"
+            },
+            "author": "Billy Steele",
+            "title": "Apple One bundle offers Arcade, Music, TV+ and iCloud for $15 a month",
+            "description": "At its September event today, Apple officially announced its “Apple One” subscription bundle: a combination of Apple Arcade, Apple Music, Apple TV+ and iCloud (50GB) for $14.95 a month.  It’s $19.95 per month, but it includes 200GB of iCloud storage.  If you …",
+            "url": "https://www.engadget.com/apple-one-subscription-bundle-apple-music-apple-tv-plus-announced-174601467.html",
+            "urlToImage": "https://o.aolcdn.com/images/dims?resize=1200%2C630&crop=1200%2C630%2C0%2C0&quality=95&image_uri=https%3A%2F%2Fs.yimg.com%2Fos%2Fcreatr-uploaded-images%2F2020-09%2F2d7d5cd0-f77b-11ea-bf7f-928bddb77371&client=amp-blogside-v2&signature=feefb5313b6f68d35747ff44402369fdf1e535c2",
+            "publishedAt": "2020-09-15T17:46:01Z",
+            "content": "The rumors were true. At its September event today, Apple officially announced its “Apple One” subscription bundle: a combination of Apple Arcade, Apple Music, Apple TV+ and iCloud (50GB) for $14.95 … [+837 chars]"
+        }
+    ]
+}

@@ -9,7 +9,7 @@
 import UIKit
 import ObjectMapper
 
-struct Article: ImmutableMappable {
+struct Article: ImmutableMappable,Equatable {
     
     let author:String?
     let title:String?
@@ -19,14 +19,21 @@ struct Article: ImmutableMappable {
     let publishedAt:Date?
     let content:String?
     
-   init(map: Map) throws {
-       author   = try map.value("author")
-       title = try? map.value("title")
-       source = try? map.value("source.name")
-       url = try? map.value("url")
-       urlToImage = try? map.value("urlToImage")
-       publishedAt = try? map.value("publishedAt")
-       content = try? map.value("content")
-   }
+    init(map: Map) throws {
+        author   = try map.value("author")
+        title = try? map.value("title")
+        source = try? map.value("source.name")
+        url = try? map.value("url")
+        urlToImage = try? map.value("urlToImage")
+        publishedAt = try? map.value("publishedAt")
+        content = try? map.value("content")
+    }
     
+    static func ==(lhs: Article, rhs: Article) -> Bool {
+        return lhs.author == rhs.author
+            && lhs.title == rhs.title
+            && lhs.source == rhs.source
+            && lhs.urlToImage == rhs.urlToImage
+            && lhs.content == rhs.content
+    }
 }

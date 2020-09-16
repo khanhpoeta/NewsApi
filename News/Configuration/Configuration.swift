@@ -16,13 +16,12 @@ struct Configuration {
     static let shared = Configuration()
     
     init() {
-        
+        if let url = Bundle.main.path(forResource: "Configuration", ofType: "plist") {
+            let dictionary = NSDictionary(contentsOfFile: url)!
+            baseUrl = (dictionary["baseUrl"] as? String) ?? ""
+            apiKey = (dictionary["apiKey"] as? String) ?? ""
+        }
         guard let _ = NSClassFromString("XCTest") else {
-            if let url = Bundle.main.path(forResource: "Configuration", ofType: "plist") {
-                let dictionary = NSDictionary(contentsOfFile: url)!
-                baseUrl = (dictionary["baseUrl"] as? String) ?? ""
-                apiKey = (dictionary["apiKey"] as? String) ?? ""
-            }
             return
         }
         realmPathName = "test.realm"
