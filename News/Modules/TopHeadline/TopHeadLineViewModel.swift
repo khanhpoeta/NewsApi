@@ -26,9 +26,10 @@ class TopHeadLineViewModel: ViewModel<TopHeadLineViewInput, TopHeadLineModelOutp
     
     private var searchApiState: TopHeadlineRequest = TopHeadlineRequest(page: 1)
     
-    lazy var articles = {
+    private lazy var articles = {
         return BehaviorSubject<[Article]>.init(value: [])
     }()
+    
     private var isLoading:Observable<Bool>?
     
     override func binding() {
@@ -45,14 +46,12 @@ class TopHeadLineViewModel: ViewModel<TopHeadLineViewInput, TopHeadLineModelOutp
         
         self.input.reachedBottomTrigger.asObserver()
             .withLatestFrom(Observable.just(self.searchApiState))
-            .map {
-                TopHeadlineRequest(page: $0.page)
-        }
-        .withLatestFrom(isLoading!) { ($0, $1) }
-        .filter{ !$0.1 }
-        .map { $0.0 }
-        .bind(to: searchAction.inputs)
-        .disposed(by: disposeBag)
+            .map { TopHeadlineRequest(page: $0.page) }
+            .withLatestFrom(isLoading!) { ($0, $1) }
+            .filter{ !$0.1 }
+            .map { $0.0 }
+            .bind(to: searchAction.inputs)
+            .disposed(by: disposeBag)
         
         searchAction.elements.map{ $0 }
             .withLatestFrom(self.articles) {($1, $0)}

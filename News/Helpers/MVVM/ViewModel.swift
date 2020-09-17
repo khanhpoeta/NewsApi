@@ -32,14 +32,14 @@ class ViewModel <InputModel:Input, OutputModel:Output> {
     private(set) var input = InputModel.init()
     private(set) var output = OutputModel.init()
     
-    internal let disposeBag = DisposeBag.init()
+    internal var disposeBag:DisposeBag!
     internal var cancel:Cancelable?
     internal var disposables:[Disposable] = []
     
     internal var error:Observable<Error>?
     
     required init() {
-        
+        disposeBag = DisposeBag.init()
         binding()
     }
     
@@ -48,6 +48,7 @@ class ViewModel <InputModel:Input, OutputModel:Output> {
     }
 
     func unBinding(){
+        disposeBag = nil
         cancel?.dispose()
         disposables.forEach { (dispose) in
             dispose.dispose()

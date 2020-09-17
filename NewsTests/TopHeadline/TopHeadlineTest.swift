@@ -23,18 +23,16 @@ class TopHeadlineTest: QuickSpec {
         var disposeBag:DisposeBag!
         
         var testScheduler: TestScheduler!
-        var tapNext: TestableObservable<Void>!
-        var onActicleSuccessfull: TestableObserver<[Article]>?
+        var nextPage: TestableObservable<Void>!
         
         func bindInputsToModelView() {
-            if tapNext != nil {
-                tapNext.bind(to: viewModel.input.reachedBottomTrigger).disposed(by: disposeBag)
+            if nextPage != nil {
+                nextPage.bind(to: viewModel.input.reachedBottomTrigger).disposed(by: disposeBag)
             }
         }
         
         func startSchedule() {
             testScheduler.start()
-            onActicleSuccessfull = testScheduler.record(viewModel.output.articles!)
         }
         
         beforeEach {
@@ -49,8 +47,8 @@ class TopHeadlineTest: QuickSpec {
                 }
                 it("Return correct response", closure: {
                     let testBundle = Bundle(for: type(of: self))
-                    let bundleURL = testBundle.path(forResource: "top_headline_success", ofType: "json")
-                    tapNext = testScheduler.createHotObservable([Recorded.next(100, ())])
+                    let bundleURL = testBundle.path(forResource: "news_api_success", ofType: "json")
+                    nextPage = testScheduler.createHotObservable([Recorded.next(100, ())])
                     bindInputsToModelView()
                     stub(condition: { (request) -> Bool in
                         return true
@@ -58,21 +56,40 @@ class TopHeadlineTest: QuickSpec {
                         return HTTPStubsResponse.init(fileAtPath: bundleURL!, statusCode: 200, headers: nil)
                     }
                     startSchedule()
-                    waitUntil(timeout: 10, action: { (done) in
-                        viewModel.articles.skip(1).subscribe { (event) in
-                            do {
-                                let data = try Data(contentsOf: URL(fileURLWithPath: bundleURL!), options: .mappedIfSafe)
-                                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                                if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let articles = jsonResult["articles"] as? [[String:Any]] {
-                                    let entities = ParserFactory<Article>().entities(articles)
-                                    XCTAssertEqual(event.element, entities)
-                                }
-                                done()
-                            } catch {
-                                // contents could not be loaded
+                    viewModel.output.articles?.skip(1).subscribe { (event) in
+                        do {
+                            let data = try Data(contentsOf: URL(fileURLWithPath: bundleURL!), options: .mappedIfSafe)
+                            let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                            if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let articles = jsonResult["articles"] as? [[String:Any]] {
+                                let entities = ParserFactory<Article>().entities(articles)
+                                XCTAssertEqual(event.element, entities)
                             }
-                        }.disposed(by: disposeBag)
-                    })
+                        } catch {
+                            // contents could not be loaded
+                        }
+                    }.disposed(by: disposeBag)
+                })
+            })
+            
+            context("Failed", closure: {
+                beforeEach {
+                    viewModel = TopHeadLineViewModel()
+                    disposeBag = DisposeBag()
+                }
+                it("Return failed response", closure: {
+                    let testBundle = Bundle(for: type(of: self))
+                    let bundleURL = testBundle.path(forResource: "news_api_failed", ofType: "json")
+                    nextPage = testScheduler.createHotObservable([Recorded.next(100, ())])
+                    bindInputsToModelView()
+                    stub(condition: { (request) -> Bool in
+                        return true
+                    }) { (request) -> HTTPStubsResponse in
+                        return HTTPStubsResponse.init(fileAtPath: bundleURL!, statusCode: 400, headers: nil)
+                    }
+                    startSchedule()
+                    viewModel.error?.subscribe({ (event) in
+                        expect(event.element).toNot(beNil())
+                    }).disposed(by: disposeBag)
                 })
             })
         }

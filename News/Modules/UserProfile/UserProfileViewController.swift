@@ -7,24 +7,38 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class UserProfileViewController: UIViewController {
-
+class UserProfileViewController: BaseViewController {
+    
+    private let viewModel = UserProfileViewModel()
+    
+    @IBOutlet weak var txfUserFirstName:UITextField!
+    @IBOutlet weak var txfUserLastName:UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func binding() {
+        
+        txfUserFirstName.rx.text.skip(1)
+            .bind(to: self.viewModel.input.firstNameChanged)
+            .disposed(by: disposeBag)
+        
+        txfUserLastName.rx.text.skip(1)
+            .bind(to: self.viewModel.input.lasNameChanged)
+            .disposed(by: disposeBag)
+        
+        viewModel.output.currentUser?.subscribe({ [weak self](event) in
+            if let user = event.element as? User{
+                debugPrint(user.firstName)
+                debugPrint(user.lastName)
+                self?.txfUserFirstName.text = user.firstName
+                self?.txfUserLastName.text = user.lastName
+            }
+        }).disposed(by: disposeBag)
     }
-    */
-
+    
 }

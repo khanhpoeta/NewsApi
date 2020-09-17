@@ -90,14 +90,38 @@
                     <view key="view" contentMode="scaleToFill" id="bAa-8K-b4Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ze-JK-Czd">
+                                <rect key="frame" x="41.5" y="188" width="331" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XEp-56-IaS">
+                                <rect key="frame" x="41.5" y="285" width="331" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="XEp-56-IaS" firstAttribute="top" secondItem="9Ze-JK-Czd" secondAttribute="bottom" constant="63" id="Fc4-8H-ZFc"/>
+                            <constraint firstItem="XEp-56-IaS" firstAttribute="width" secondItem="9Ze-JK-Czd" secondAttribute="width" id="GKF-dX-1Ey"/>
+                            <constraint firstItem="9Ze-JK-Czd" firstAttribute="centerX" secondItem="bAa-8K-b4Y" secondAttribute="centerX" id="KA3-NC-EUh"/>
+                            <constraint firstItem="XEp-56-IaS" firstAttribute="centerX" secondItem="bAa-8K-b4Y" secondAttribute="centerX" id="Nvm-VW-YFR"/>
+                            <constraint firstItem="9Ze-JK-Czd" firstAttribute="width" secondItem="bAa-8K-b4Y" secondAttribute="width" multiplier="0.8" id="p77-uk-Vne"/>
+                            <constraint firstItem="9Ze-JK-Czd" firstAttribute="top" secondItem="tCZ-uH-sx6" secondAttribute="top" constant="100" id="xF8-w3-cHn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="tCZ-uH-sx6"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="RLb-ns-JeA"/>
+                    <connections>
+                        <outlet property="txfUserFirstName" destination="9Ze-JK-Czd" id="C1S-of-boe"/>
+                        <outlet property="txfUserLastName" destination="XEp-56-IaS" id="EaK-4R-yp0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="56y-1e-N2I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="481" y="737"/>
+            <point key="canvasLocation" x="502.89855072463774" y="752.67857142857144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Jdl-Z1-TXY">

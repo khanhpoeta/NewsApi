@@ -27,8 +27,8 @@ class CustomNewModelOutput: Output {
 
 class CustomNewViewModel: ViewModel<CustomNewViewInput, CustomNewModelOutput> {
     
-    lazy var articles = {
-        return BehaviorSubject<[Article]>.init(value: [])
+    private lazy var articles = {
+        return PublishSubject<[Article]>.init()
     }()
     
     private var searchApiState = EveryThinkRequest.init(key: .bitcoint,page: 1)

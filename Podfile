@@ -1,14 +1,11 @@
 # Uncomment the next line to define a global platform for your project
-  platform :ios, '11.0'
-
-def share_pods
-  pod 'RxSwift'
-  pod 'Moya'
-end
+platform :ios, '11.0'
 
 def ios_pods
+  pod 'RxSwift'
+  pod 'Moya'
   pod 'SwiftGen'
-  # pod 'RealmSwift'
+  pod 'RealmSwift'
   pod 'AlamofireImage'
   pod 'ObjectMapper'
   pod 'Action'
@@ -17,7 +14,6 @@ end
 target 'News' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  share_pods
   ios_pods
   # Pods for News
   
